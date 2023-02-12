@@ -1,13 +1,14 @@
 <template>
-    <Layout>
-        <h1 class="text-4xl font-bold">Home</h1>
-    </Layout>
+    <Head title="My App - Home"></Head>
+    <h1 class="text-4xl font-bold">Home</h1>
 </template>
 
 <script>
 import Layout from "../Shared/Layout.vue";
+import { Head } from "@inertiajs/vue3";
 
 export default {
-    components: { Layout },
+    layout: Layout,
+    components: { Head },
 };
 </script>
