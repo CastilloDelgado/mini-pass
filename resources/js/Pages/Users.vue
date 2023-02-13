@@ -14,6 +14,7 @@
                     :key="user.id"
                     class="hover:bg-gray-50"
                 >
+                    <td class="px-6 py-4">{{ user.id }}</td>
                     <td class="px-6 py-4">{{ user.name }}</td>
                     <td class="px-6 py-4">
                         <div class="flex justify-end gap-4">
