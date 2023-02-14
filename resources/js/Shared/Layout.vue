@@ -2,7 +2,7 @@
     <Head title="My"></Head>
     <header class="flex bg-gray-200 justify-between">
         <div class="flex flow-row items-center">
-            <p class="font-bold mr-2 p-3">My app</p>
+            <p class="font-bold mr-2 p-3">Mini Pass</p>
             <p class="text-sm">
                 Welcome back, <b> {{ username }}!</b>
             </p>
