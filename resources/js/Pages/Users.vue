@@ -1,6 +1,16 @@
 <template>
     <Head title="My App - Users"></Head>
-    <h1 class="text-4xl font-bold">Users</h1>
+    <!-- Filter -->
+    <div class="flex justify-between mt-6">
+        <h1 class="text-4xl font-bold">Users</h1>
+        <input
+            type="text"
+            placeholder="Search..."
+            class="px-2 rounded border"
+            v-model="search"
+        />
+    </div>
+
     <!-- component -->
     <div
         class="overflow-hidden rounded-lg border border-gray-200 shadow-md my-5"
@@ -69,6 +79,26 @@ export default {
     components: { Head, Link },
     props: {
         users: Object,
+        filters: Object,
+    },
+
+    data() {
+        return {
+            search: this.filters.search,
+        };
+    },
+
+    watch: {
+        search(value) {
+            this.$inertia.get(
+                "/users",
+                { search: value },
+                {
+                    preserveState: true,
+                    replace: true,
+                }
+            );
+        },
     },
 };
 </script>
