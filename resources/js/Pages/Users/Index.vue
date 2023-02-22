@@ -78,8 +78,8 @@
 
 <script>
 import Layout from "../../Shared/Layout.vue";
-import { Head } from "@inertiajs/vue3";
-import { Link } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
+import { debounce } from "lodash";
 
 export default {
     layout: Layout,
@@ -96,7 +96,7 @@ export default {
     },
 
     watch: {
-        search(value) {
+        search: debounce(function (value) {
             this.$inertia.get(
                 "/users",
                 { search: value },
@@ -105,7 +105,7 @@ export default {
                     replace: true,
                 }
             );
-        },
+        }, 500),
     },
 };
 </script>

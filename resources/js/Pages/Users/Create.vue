@@ -87,7 +87,7 @@ export default {
 </script>
 
 <script setup>
-import useForm from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 
 let form = useForm({
     name: "",
@@ -98,6 +98,4 @@ let form = useForm({
 let submit = () => {
     form.post("/users");
 };
-
-let processing = ref(false);
 </script>
