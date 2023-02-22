@@ -9,7 +9,7 @@
         </div>
         <Nav />
     </header>
-    <main>
+    <main class="pt-6">
         <div class="max-w-2xl mx-auto">
             <slot />
         </div>

@@ -1,7 +1,7 @@
 <template>
     <Head title="My App - Users"></Head>
     <!-- Filter -->
-    <div class="flex justify-between mt-6">
+    <div class="flex justify-between">
         <h1 class="text-4xl font-bold">Users</h1>
         <input
             type="text"
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
+import Layout from "../../Shared/Layout.vue";
 import { Head } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 
