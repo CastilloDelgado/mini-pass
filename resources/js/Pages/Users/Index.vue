@@ -2,7 +2,14 @@
     <Head title="My App - Users"></Head>
     <!-- Filter -->
     <div class="flex justify-between">
-        <h1 class="text-4xl font-bold">Users</h1>
+        <div class="flex flex-row items-end">
+            <h1 class="text-4xl font-bold">Users</h1>
+            <Link
+                href="/users/create"
+                class="ml-4 text-blue-500 hover:text-blue:700 hover:underline"
+                >Create user</Link
+            >
+        </div>
         <input
             type="text"
             placeholder="Search..."
