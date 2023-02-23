@@ -60,6 +60,12 @@ const logout = () => {
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    :href="route('events.index')"
+                                    :active="route().current('events')"
+                                >
+                                    Eventos
+                                </NavLink>
                             </div>
                         </div>
 
