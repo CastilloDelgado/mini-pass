@@ -31,5 +31,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
-    })->name('dashboard');
+    }
+    )->name('dashboard');
 });
