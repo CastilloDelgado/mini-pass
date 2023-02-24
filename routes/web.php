@@ -48,4 +48,11 @@ Route::middleware([
             return Inertia::render('Events/Index');
         }
     )->name('events.index');
+
+    Route::get(
+        '/events/create',
+        function () {
+            return Inertia::render('Events/Create');
+        }
+    )->name('events.create');
 });
