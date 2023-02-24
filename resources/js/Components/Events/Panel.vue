@@ -1,5 +1,6 @@
 <script setup>
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { Link } from "@inertiajs/vue3";
+import PanelOption from "./PanelOption.vue";
 </script>
 
 <template>
@@ -19,19 +20,25 @@ import ApplicationLogo from "@/Components/ApplicationLogo.vue";
             <div class="bg-gray-100 w-64 px-4 py-6 rounded-lg">
                 <p class="text-xl font-bold">Opciones</p>
                 <ul class="mt-8">
-                    <li class="mb-2 text-lg"><a href="#">Mis eventos</a></li>
                     <li class="mb-2 text-lg">
-                        <a href="#">Crear nuevo evento</a>
+                        <PanelOption
+                            :href="route('events.index')"
+                            :active="route().current('events.index')"
+                        >
+                            Mis eventos
+                        </PanelOption>
+                    </li>
+                    <li class="mb-2 text-lg">
+                        <PanelOption
+                            :href="route('events.create')"
+                            :active="route().current('events.create')"
+                        >
+                            Crear evento
+                        </PanelOption>
                     </li>
                 </ul>
             </div>
-            <div class="w-full px-6 py-6">
-                <p class="text-3xl font-bold">Mis eventos</p>
-                <p class="mt-2 text-gray-500 leading-relaxed">
-                    Listado de los eventos que has creado dentro de la
-                    aplicación.
-                </p>
-            </div>
+            <slot />
         </div>
     </div>
 </template>
