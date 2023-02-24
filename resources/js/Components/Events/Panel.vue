@@ -16,11 +16,11 @@ import PanelOption from "./PanelOption.vue";
             </p>
         </div>
 
-        <div class="bg-opacity-25 p-6 lg:p-8 flex flex-row">
+        <div class="bg-opacity-25 p-6 lg:p-8 flex flex-row w-full">
             <div class="bg-gray-100 w-64 px-4 py-6 rounded-lg">
                 <p class="text-xl font-bold">Opciones</p>
                 <ul class="mt-8">
-                    <li class="mb-2 text-lg">
+                    <li class="mb-2 text-md">
                         <PanelOption
                             :href="route('events.index')"
                             :active="route().current('events.index')"
@@ -28,7 +28,7 @@ import PanelOption from "./PanelOption.vue";
                             Mis eventos
                         </PanelOption>
                     </li>
-                    <li class="mb-2 text-lg">
+                    <li class="mb-2 text-md">
                         <PanelOption
                             :href="route('events.create')"
                             :active="route().current('events.create')"
@@ -38,7 +38,10 @@ import PanelOption from "./PanelOption.vue";
                     </li>
                 </ul>
             </div>
-            <slot />
+
+            <div class="w-2/3">
+                <slot />
+            </div>
         </div>
     </div>
 </template>
