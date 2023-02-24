@@ -3,7 +3,8 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import TextArea from "@/Components/TextArea.vue";
 import DateInput from "@/Components/DateInput.vue";
-import InputSmallDescription from "../InputSmallDescription.vue";
+import InputSmallDescription from "@/Components/InputSmallDescription.vue";
+import ImageInput from "@/Components/ImageInput.vue";
 </script>
 
 <template>
@@ -38,10 +39,56 @@ import InputSmallDescription from "../InputSmallDescription.vue";
             </InputSmallDescription>
             <DateInput />
         </div>
+
+        <!-- Imagenes del evento -->
+        <p class="mt-4 mb-4 font-bold text-lg">- Imagen del evento</p>
+        <div class="w-full flex flex-row justify-between">
+            <div>
+                <div class="mb-4">
+                    <InputLabel
+                        for="title"
+                        value="Imagen principal del evento"
+                    />
+                    <InputSmallDescription>
+                        Está es la imagen que se mostrará en el listado de
+                        eventos de nuestra página principal.
+                    </InputSmallDescription>
+                    <ImageInput />
+                </div>
+            </div>
+            <div>
+                <div class="mb-4">
+                    <InputLabel
+                        for="title"
+                        value="Imagen de portada del evento"
+                    />
+                    <InputSmallDescription>
+                        Está es la imagen que se mostrará en la vista de
+                        información del evento en la parte superior.
+                    </InputSmallDescription>
+                    <ImageInput />
+                </div>
+            </div>
+        </div>
+
         <!-- Lugar del evento -->
         <p class="mt-4 mb-4 font-bold text-lg">- Lugar del evento</p>
         <div class="mb-4">
             <InputLabel for="title" value="Inmueble" />
+            <!-- <InputSmallDescription>
+                Busca el evento en que se llevará a cabo tu evento en esta lista
+                para completar automaticamente los datos de los demás campos de
+                ubicación.
+            </InputSmallDescription> -->
+            <TextInput
+                id="title"
+                type="text"
+                class="mt-1 block w-full"
+                required
+            />
+        </div>
+        <div class="mb-4">
+            <InputLabel for="title" value="Dirección completa" />
             <!-- <InputSmallDescription>
                 Busca el evento en que se llevará a cabo tu evento en esta lista
                 para completar automaticamente los datos de los demás campos de
