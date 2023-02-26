@@ -31,6 +31,12 @@ const submit = () => {
 
 <template>
     <form @submit.prevent="submit">
+        <div>
+            <p class="text-3xl font-bold">Crear evento</p>
+            <p class="mt-2 text-gray-500 leading-relaxed">
+                Completa el formulario para crear un nuevo evento.
+            </p>
+        </div>
         <!-- Información general del evento -->
         <p class="mt-4 mb-4 font-bold text-lg">- Información del evento</p>
         <div class="mb-4">
@@ -185,7 +191,16 @@ const submit = () => {
                 />
             </div>
         </div>
+
         <div>
+            <p class="text-3xl font-bold">Crear Entradas</p>
+            <p class="mt-2 text-gray-500 leading-relaxed">
+                Completa el formulario para crear las entradas para el evento.
+            </p>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mt-4">
             <PrimaryButton class=""> Crear evento </PrimaryButton>
         </div>
     </form>
