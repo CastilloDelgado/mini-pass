@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +29,24 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'date' => 'required',
+            'public_at' => 'required',
+            // 'main_image' => ['required', 'image'],
+            // 'portrait_image' => ['required', 'image'],
+            'location' => 'required',
+            'address' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+        ]);
+
+        $event = Event::create($attributes);
+
+        return $event;
     }
 
     /**

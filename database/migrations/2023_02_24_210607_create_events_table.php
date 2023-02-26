@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('description');
             $table->timestamp('date');
             $table->timestamp('public_at');
-            $table->string('main_image');
+            $table->string('main_image')->nullable();
             $table->string('portrait_image')->nullable();
 
             $table->string('location', 255);
@@ -26,6 +26,8 @@ return new class extends Migration {
             $table->string('state', 255);
             $table->string('city', 255);
             $table->string('postal_code', 6);
+
+            $table->string('status')->default('inactivo');
 
             $table->timestamps();
         });
