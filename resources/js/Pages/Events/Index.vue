@@ -4,7 +4,7 @@ import Panel from "@/Components/Events/Panel.vue";
 </script>
 
 <template>
-    <AppLayout title="Events">
+    <AppLayout title="Mis eventos">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Eventos

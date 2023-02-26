@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,17 +43,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get(
-        '/events',
-        function () {
-            return Inertia::render('Events/Index');
-        }
-    )->name('events.index');
-
-    Route::get(
-        '/events/create',
-        function () {
-            return Inertia::render('Events/Create');
-        }
-    )->name('events.create');
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
 });
