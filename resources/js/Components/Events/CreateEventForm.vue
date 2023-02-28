@@ -192,13 +192,6 @@ const submit = () => {
             </div>
         </div>
 
-        <div>
-            <p class="text-3xl font-bold">Crear Entradas</p>
-            <p class="mt-2 text-gray-500 leading-relaxed">
-                Completa el formulario para crear las entradas para el evento.
-            </p>
-        </div>
-
         <!-- Submit button -->
         <div class="mt-4">
             <PrimaryButton class=""> Crear evento </PrimaryButton>

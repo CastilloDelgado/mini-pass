@@ -2,7 +2,6 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Panel from "@/Components/Events/Panel.vue";
 import CreateEventForm from "@/Components/Events/CreateEventForm.vue";
-import CreateTicketsForm from "@/Components/Events/CreateTicketsForm.vue";
 </script>
 
 <template>
