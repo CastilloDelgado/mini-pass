@@ -42,13 +42,20 @@ defineProps({
                                 <table class="w-full text-left">
                                     <tr>
                                         <th>Tipo</th>
+                                        <th>Descripción</th>
                                         <th>Precio</th>
                                         <th>Cantidad disponible inicial</th>
                                     </tr>
-                                    <tr v-for="type in ticketTypes">
-                                        <td>Hola</td>
-                                        <td>Hola</td>
-                                        <td>Hola</td>
+                                    <tr
+                                        class="border-gray border-b-2 p-6"
+                                        v-for="type in ticketTypes"
+                                    >
+                                        <td>{{ type.title }}</td>
+                                        <td>{{ type.description }}</td>
+                                        <td>
+                                            {{ `$ ${type.price} MXN` }}
+                                        </td>
+                                        <td>{{ type.quantity }}</td>
                                     </tr>
                                 </table>
                             </div>

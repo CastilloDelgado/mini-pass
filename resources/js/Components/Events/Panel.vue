@@ -22,7 +22,7 @@ import PanelOption from "./PanelOption.vue";
                     <li class="mb-2 text-md">
                         <PanelOption
                             :href="route('events.index')"
-                            :active="route().current('events.index')"
+                            :active="route().current('events.*')"
                         >
                             Mis eventos
                         </PanelOption>
