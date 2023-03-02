@@ -15,7 +15,7 @@ class TicketTypeController extends Controller
     public function index(Event $event)
     {
         $ticketTypes = TicketType::all();
-        return Inertia::render("Tickets/Index", [
+        return Inertia::render("TicketTypes/Index", [
             "event" => $event,
             "ticketTypes" => $ticketTypes
         ]);
@@ -24,9 +24,11 @@ class TicketTypeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Event $event)
     {
-        //
+        return Inertia::render("TicketTypes/Create", [
+            "event" => $event
+        ]);
     }
 
     /**

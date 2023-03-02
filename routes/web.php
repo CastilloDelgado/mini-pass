@@ -56,5 +56,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('tickets.index');
+    Route::get('/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
+    Route::get('/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
 });

@@ -194,7 +194,7 @@ const submit = () => {
 
         <!-- Submit button -->
         <div class="mt-4">
-            <PrimaryButton class=""> Crear evento </PrimaryButton>
+            <PrimaryButton> Crear evento </PrimaryButton>
         </div>
     </form>
 </template>
