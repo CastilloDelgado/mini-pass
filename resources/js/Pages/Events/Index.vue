@@ -1,6 +1,11 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Panel from "@/Components/Events/Panel.vue";
+import { Link } from "@inertiajs/vue3";
+
+defineProps({
+    events: Array,
+});
 </script>
 
 <template>
@@ -10,11 +15,40 @@ import Panel from "@/Components/Events/Panel.vue";
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <Panel>
                         <div class="w-full px-6 py-6">
-                            <p class="text-3xl font-bold">Mis eventos</p>
-                            <p class="mt-2 text-gray-500 leading-relaxed">
-                                Listado de los eventos que has creado dentro de
-                                la aplicación.
-                            </p>
+                            <div>
+                                <p class="text-3xl font-bold">Mis eventos</p>
+                                <p class="mt-2 text-gray-500 leading-relaxed">
+                                    Listado de los eventos que has creado dentro
+                                    de la aplicación.
+                                </p>
+                            </div>
+                            <div class="mt-6">
+                                <table class="w-full text-left">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Evento</th>
+                                        <th>Locación</th>
+                                        <th>Fecha del evento</th>
+                                        <th>Fecha de publicación</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    <tr v-for="event in events">
+                                        <td>{{ event.id }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>
+                                            <Link
+                                                :href="/events/ + event.id"
+                                                class="text-sky-700 underline"
+                                            >
+                                                Editar
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </Panel>
                 </div>

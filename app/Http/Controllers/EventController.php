@@ -13,7 +13,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Events/Index');
+        $events = Event::all();
+        return Inertia::render('Events/Index', [
+            "events" => $events
+        ]);
     }
 
     /**
