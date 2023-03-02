@@ -7,7 +7,6 @@ import PanelOption from "./PanelOption.vue";
     <div>
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
             <h1 class="text-2xl font-medium text-gray-900">Eventos</h1>
-
             <p class="mt-4 text-gray-500 leading-relaxed">
                 Este es tu panel de eventos, aquí puedes ver un listado de los
                 eventos que has creado, agregar diferentes productos de venta a
@@ -16,8 +15,8 @@ import PanelOption from "./PanelOption.vue";
             </p>
         </div>
 
-        <div class="bg-opacity-25 p-6 lg:p-8 flex flex-row w-full">
-            <div class="bg-gray-100 w-64 px-4 py-6 rounded-lg">
+        <div class="bg-opacity-25 p-6 lg:p-8 flex flex-col md:flex-row">
+            <div class="bg-gray-100 w-full md:w-64 px-4 py-6 rounded-lg">
                 <p class="text-xl font-bold">Opciones</p>
                 <ul class="mt-8">
                     <li class="mb-2 text-md">
@@ -39,7 +38,7 @@ import PanelOption from "./PanelOption.vue";
                 </ul>
             </div>
 
-            <div class="w-2/3">
+            <div class="w-full md:w-2/3">
                 <slot />
             </div>
         </div>
