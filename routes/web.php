@@ -58,4 +58,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
     Route::get('/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
+    Route::post('/events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
 });

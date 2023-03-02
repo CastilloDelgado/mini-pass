@@ -11,16 +11,13 @@ defineProps({
 const form = useForm({
     title: "",
     description: "",
+    price: 0,
     quantity: 0,
 });
-
-function submit() {
-    form.post("/events/" + this.props.event.id + "/create");
-}
 </script>
 
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="form.post('/events/' + event.id + '/ticket-types')">
         <!-- Información general del evento -->
 
         <div class="mb-4">
@@ -44,7 +41,17 @@ function submit() {
             />
         </div>
         <div class="mb-4">
-            <InputLabel for="title" value="Descripción" />
+            <InputLabel for="title" value="Precio de venta" />
+            <TextInput
+                id="price"
+                type="number"
+                class="mt-1 block w-full"
+                required
+                v-model="form.price"
+            />
+        </div>
+        <div class="mb-4">
+            <InputLabel for="title" value="Cantidad" />
             <TextInput
                 id="quantity"
                 type="number"
@@ -56,7 +63,7 @@ function submit() {
 
         <!-- Submit button -->
         <div class="mt-4">
-            <PrimaryButton class=""> Crear evento </PrimaryButton>
+            <PrimaryButton class=""> Crear entrada </PrimaryButton>
         </div>
     </form>
 </template>

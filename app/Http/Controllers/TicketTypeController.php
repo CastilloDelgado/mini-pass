@@ -34,9 +34,21 @@ class TicketTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Event $event, Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => "required"
+        ]);
+
+        $attributes["quantity_left"] = $attributes["quantity"];
+        $attributes["event_id"] = $event->id;
+
+        $ticketType = TicketType::create($attributes);
+
+        return $ticketType;
     }
 
     /**
