@@ -23,7 +23,7 @@ defineProps({
                                 </p>
                             </div>
                             <div class="mt-6">
-                                <table class="w-full text-left">
+                                <table class="w-full text-left overflow-y-auto">
                                     <tr>
                                         <th>ID</th>
                                         <th>Evento</th>

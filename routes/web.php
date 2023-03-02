@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketTypeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,5 +47,14 @@ Route::middleware([
 ])->group(function () {
     Route::get('/events', [EventController::class, 'index'])->name('events.index');
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('tickets.index');
 });
