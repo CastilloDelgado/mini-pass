@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import { Head } from "@inertiajs/vue3";
 
 defineProps({
     events: Array,
@@ -7,6 +8,8 @@ defineProps({
 </script>
 <template>
     <AppLayout>
+        <Head title="Inicio" />
+
         <div class="bg-white p-6">
             <!-- Section -->
             <div>
