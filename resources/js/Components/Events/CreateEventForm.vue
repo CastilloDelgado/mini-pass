@@ -5,7 +5,6 @@ import TextInput from "@/Components/TextInput.vue";
 import TextArea from "@/Components/TextArea.vue";
 import DateInput from "@/Components/DateInput.vue";
 import InputSmallDescription from "@/Components/InputSmallDescription.vue";
-import ImageInput from "@/Components/ImageInput.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const form = useForm({
@@ -13,7 +12,7 @@ const form = useForm({
     description: "",
     date: "",
     public_at: "",
-    // main_image: "",
+    main_image: null,
     // portrait_image: "",
     location: "",
     address: "",
@@ -97,10 +96,15 @@ const submit = () => {
                         Está es la imagen que se mostrará en el listado de
                         eventos de nuestra página principal.
                     </InputSmallDescription>
-                    <ImageInput id="main_image" />
+                    <input
+                        type="file"
+                        class="mt-2"
+                        @input="form.main_image = $event.target.files[0]"
+                    />
+                    <!-- <ImageInput id="main_image" v-model="form.main_image" /> -->
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <div class="mb-4">
                     <InputLabel
                         for="portrait_image"
@@ -112,7 +116,7 @@ const submit = () => {
                     </InputSmallDescription>
                     <ImageInput id="portrait_image" />
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Lugar del evento -->

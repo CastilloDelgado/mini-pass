@@ -32,7 +32,7 @@ defineProps({
                                         <th>Fecha de publicación</th>
                                         <th>Acciones</th>
                                     </tr>
-                                    <tr v-for="event in events">
+                                    <tr v-for="event in events" class="p-2">
                                         <td>{{ event.id }}</td>
                                         <td>{{ event.title }}</td>
                                         <td>{{ event.location }}</td>

@@ -13,5 +13,8 @@
                 </p>
             </div>
         </div>
+        <div class="mt-2">
+            <input type="file" />
+        </div>
     </div>
 </template>

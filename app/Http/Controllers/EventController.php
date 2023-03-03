@@ -37,7 +37,7 @@ class EventController extends Controller
             'description' => 'required',
             'date' => 'required',
             'public_at' => 'required',
-            // 'main_image' => ['required', 'image'],
+            'main_image' => ['required', 'image'],
             // 'portrait_image' => ['required', 'image'],
             'location' => 'required',
             'address' => 'required',
@@ -46,6 +46,8 @@ class EventController extends Controller
             'city' => 'required',
             'postal_code' => 'required',
         ]);
+
+        $attributes["main_image"] = $request->file('main_image')->store('events');
 
         $event = Event::create($attributes);
 
