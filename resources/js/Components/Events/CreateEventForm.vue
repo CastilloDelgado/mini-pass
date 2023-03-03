@@ -33,7 +33,7 @@ const submit = () => {
         <div>
             <p class="text-3xl font-bold">Crear evento</p>
             <p class="mt-2 text-gray-500 leading-relaxed">
-                Completa el formulario para crear un evento.
+                Completa el formulario para crear un nuevo evento.
             </p>
         </div>
         <!-- Información general del evento -->
