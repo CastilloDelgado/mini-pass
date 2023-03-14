@@ -22,9 +22,14 @@ defineProps({
             </button>
         </div>
         <div class="py-4 px-2 h-max">
-            <p class="font-bold text-lg">{{ event.title }}</p>
-            <p class="text-center font-bold">{{ event.date }}</p>
-            <p class="text-sm">{{ event.description }}</p>
+            <p class="font-bold text-lg mb-2">{{ event.title }}</p>
+            <div class="flex flex-col">
+                <p class="text-xs text-center">Fecha del evento:</p>
+                <p class="text-center font-bold mb-2 text-center">
+                    {{ event.date }}
+                </p>
+            </div>
+            <p class="text-sm text-clip">{{ event.description }}</p>
         </div>
     </div>
 </template>
