@@ -21,7 +21,7 @@ defineProps({
                 Comprar entradas
             </button>
         </div>
-        <div class="py-4 px-2 h-max">
+        <div class="py-3 px-2 h-max">
             <p class="font-bold text-lg mb-2">{{ event.title }}</p>
             <div class="flex flex-col">
                 <p class="text-xs text-center">Fecha del evento:</p>
@@ -29,7 +29,9 @@ defineProps({
                     {{ event.date }}
                 </p>
             </div>
-            <p class="text-sm text-clip">{{ event.description }}</p>
+            <p class="text-sm text-justify">
+                {{ event.description }}
+            </p>
         </div>
     </div>
 </template>

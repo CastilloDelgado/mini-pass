@@ -11,7 +11,7 @@ class ShowEventsController extends Controller
 {
     public function welcome()
     {
-        $events = Event::all();
+        $events = Event::orderBy('date')->get();
 
         return Inertia::render('Billboards/Welcome', [
             'events' => $events
