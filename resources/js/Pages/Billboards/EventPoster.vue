@@ -14,17 +14,17 @@ defineProps({
                 class="object-cover h-80"
             />
         </div>
-        <div class="py-4 px-2">
+        <div class="flex justify-center">
+            <button
+                class="bg-blue-500 hover:bg-blue-600 transition text-white px-3 py-1 w-full"
+            >
+                Comprar entradas
+            </button>
+        </div>
+        <div class="py-4 px-2 h-max">
             <p class="font-bold text-lg">{{ event.title }}</p>
+            <p class="text-center font-bold">{{ event.date }}</p>
             <p class="text-sm">{{ event.description }}</p>
-            <p class="text-center mt-2 font-bold">{{ event.date }}</p>
-            <div class="flex justify-center">
-                <button
-                    class="bg-blue-500 text-white font-bold px-3 py-1 rounded"
-                >
-                    Ir al evento
-                </button>
-            </div>
         </div>
     </div>
 </template>
