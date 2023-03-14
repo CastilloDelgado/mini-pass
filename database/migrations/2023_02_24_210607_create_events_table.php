@@ -25,7 +25,9 @@ return new class extends Migration {
             $table->string('country', 255);
             $table->string('state', 255);
             $table->string('city', 255);
-            $table->string('postal_code', 6);
+            $table->string('post_code', 255);
+
+            $table->unsignedBigInteger('created_by');
 
             $table->string('status')->default('inactivo');
 
