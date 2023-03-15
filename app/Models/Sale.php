@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     protected $guarded = [];
-    
+
     use HasFactory;
-    
+
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
 }

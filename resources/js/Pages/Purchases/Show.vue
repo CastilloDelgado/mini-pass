@@ -1,5 +1,5 @@
 <script setup>
-import EventInfoLayout from "../../Layouts/EventInfoLayout.vue";
+import EventInfoLayout from "@/Layouts/EventInfoLayout.vue";
 
 defineProps({
     event: Object,

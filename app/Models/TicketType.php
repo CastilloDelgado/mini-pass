@@ -16,4 +16,9 @@ class TicketType extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(TicketType::class);
+    }
 }

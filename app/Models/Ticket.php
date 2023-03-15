@@ -10,4 +10,14 @@ class Ticket extends Model
     protected $guarded = [];
 
     use HasFactory;
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
+    }
+
+    public function ticket_type()
+    {
+        return $this->belongsTo(TicketType::class);
+    }
 }

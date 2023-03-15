@@ -1,6 +1,5 @@
 <script setup>
 import EventInfoLayout from "../../Layouts/EventInfoLayout.vue";
-import EventInfo from "./EventInfo.vue";
 import EventTicketsForm from "./EventTicketsForm.vue";
 
 defineProps({
@@ -9,9 +8,6 @@ defineProps({
 </script>
 <template>
     <EventInfoLayout :event="event">
-        <EventInfo :event="event" />
         <EventTicketsForm :event="event" />
     </EventInfoLayout>
 </template>
-
-1026
