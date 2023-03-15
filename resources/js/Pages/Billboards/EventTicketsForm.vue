@@ -1,15 +1,29 @@
 <script setup>
-defineProps({
+import { useForm } from "@inertiajs/vue3";
+import PrimaryButton from "../../Components/PrimaryButton.vue";
+
+const props = defineProps({
     event: Object,
 });
+
+const emptyForm = {};
+props.event.ticket_types.forEach((type) => {
+    emptyForm[type.id] = 0;
+});
+
+const form = useForm({ ...emptyForm });
 </script>
 
 <template>
     <div class="mt-5">
         <p class="text-2xl font-bold">Selecciona tus entradas</p>
-        <form action="">
+        <form
+            @submit.prevent="
+                ($event) => form.post('/events/' + event.id + '/purchase')
+            "
+        >
             <table class="w-full mt-4">
-                <thead class="bg-gray-200">
+                <thead class="bg-blue-500 text-white">
                     <tr>
                         <th class="w-44">Tipo de Entrada</th>
                         <th>Beneficios</th>
@@ -26,7 +40,7 @@ defineProps({
                         <td class="p-3">{{ type.description }}</td>
                         <td class="p-3">${{ type.price }} MX</td>
                         <td class="p-3 flex justify-center">
-                            <select>
+                            <select :id="type.id" v-model="form[type.id]">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>

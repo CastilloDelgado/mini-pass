@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ShowEventsController;
 use App\Http\Controllers\TicketTypeController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,14 @@ Route::middleware([
     )->name('dashboard');
 });
 
+// Sales
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::post('events/{event}/purchase', [SaleController::class, 'store'])->name('sales.store');
+});
 
 
 
