@@ -43,13 +43,14 @@ Route::middleware([
     )->name('dashboard');
 });
 
-// Sales
+// Sales - Purchases
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::post('events/{event}/purchase', [SaleController::class, 'store'])->name('sales.store');
+    Route::get('/events/{event}/purchases/{sale}', [SaleController::class, 'show'])->name('sales.show');
+    Route::post('/events/{event}/purchases', [SaleController::class, 'store'])->name('sales.store');
 });
 
 

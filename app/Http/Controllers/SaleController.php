@@ -7,6 +7,7 @@ use App\Models\Sale;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class SaleController extends Controller
 {
@@ -49,15 +50,18 @@ class SaleController extends Controller
             }
         }
 
-        return ($sale);
+        return to_route('sales.show', [$event, $sale]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sale $sale)
+    public function show(Event $event, Sale $sale)
     {
-        //
+        return Inertia::render('Purchases/Show', [
+            "event" => $event,
+            "sale" => $sale
+        ]);
     }
 
     /**

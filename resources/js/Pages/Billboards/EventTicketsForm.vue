@@ -11,17 +11,17 @@ props.event.ticket_types.forEach((type) => {
     emptyForm[type.id] = 0;
 });
 
+const submit = () => {
+    form.post(route("sales.store", props.event));
+};
+
 const form = useForm({ ...emptyForm });
 </script>
 
 <template>
     <div class="mt-5">
         <p class="text-2xl font-bold">Selecciona tus entradas</p>
-        <form
-            @submit.prevent="
-                ($event) => form.post('/events/' + event.id + '/purchase')
-            "
-        >
+        <form @submit.prevent="submit">
             <table class="w-full mt-4">
                 <thead class="bg-blue-500 text-white">
                     <tr>

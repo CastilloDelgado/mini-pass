@@ -1,5 +1,5 @@
 <script setup>
-import EventInfoLayout from "./EventInfoLayout.vue";
+import EventInfoLayout from "../../Layouts/EventInfoLayout.vue";
 import EventInfo from "./EventInfo.vue";
 import EventTicketsForm from "./EventTicketsForm.vue";
 
