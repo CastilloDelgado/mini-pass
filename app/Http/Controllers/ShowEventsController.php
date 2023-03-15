@@ -17,4 +17,11 @@ class ShowEventsController extends Controller
             'events' => $events
         ]);
     }
+
+    public function show(Event $event)
+    {
+        return Inertia::render('Billboards/Show', [
+            'event' => $event
+        ]);
+    }
 }

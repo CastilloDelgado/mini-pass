@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ShowEventsController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketTypeController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,6 +27,7 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', [ShowEventsController::class, 'welcome']);
+Route::get('/events/{event}', [ShowEventsController::class, 'show']);
 
 Route::middleware([
     'auth:sanctum',
@@ -43,15 +42,18 @@ Route::middleware([
     )->name('dashboard');
 });
 
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/events', [EventController::class, 'index'])->name('events.index');
-    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
-    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-    Route::post('/events', [EventController::class, 'store'])->name('events.store');
+    Route::get('/admin/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/admin/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::get('/admin/events/{event}', [EventController::class, 'show'])->name('events.show');
+    Route::post('/admin/events', [EventController::class, 'store'])->name('events.store');
 });
 
 Route::middleware([
@@ -59,7 +61,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
-    Route::get('/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
-    Route::post('/events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
+    Route::get('/admin/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
+    Route::get('/admin/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
+    Route::post('/admin/events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
 });

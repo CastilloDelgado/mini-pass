@@ -7,8 +7,8 @@ defineProps({
 });
 </script>
 <template>
-    <AppLayout>
-        <div class="bg-white p-6">
+    <AppLayout title="Inicio">
+        <div class="bg-white p-6 md:container mx-auto">
             <EventsGrid :events="events" title="Proximos eventos" />
         </div>
     </AppLayout>
