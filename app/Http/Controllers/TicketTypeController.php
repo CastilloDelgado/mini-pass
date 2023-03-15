@@ -14,10 +14,10 @@ class TicketTypeController extends Controller
      */
     public function index(Event $event)
     {
-        $ticketTypes = TicketType::all();
+        $event->ticket_types;
+
         return Inertia::render("TicketTypes/Index", [
             "event" => $event,
-            "ticketTypes" => $ticketTypes
         ]);
     }
 

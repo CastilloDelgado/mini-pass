@@ -40,7 +40,9 @@ defineProps({
                                         <td>{{ event.title }}</td>
                                         <td>
                                             <Link
-                                                :href="/events/ + event.id"
+                                                :href="
+                                                    '/admin/events/' + event.id
+                                                "
                                                 class="text-sky-700 underline"
                                             >
                                                 Editar

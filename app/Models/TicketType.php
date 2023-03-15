@@ -11,4 +11,9 @@ class TicketType extends Model
 
     protected $guarded = [];
 
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

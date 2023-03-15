@@ -29,7 +29,9 @@ defineProps({
                             <div class="mt-5">
                                 <Link
                                     :href="
-                                        '/events/' + event.id + '/ticket-types'
+                                        '/admin/events/' +
+                                        event.id +
+                                        '/ticket-types'
                                     "
                                 >
                                     Entradas

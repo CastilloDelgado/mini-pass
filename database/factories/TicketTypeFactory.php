@@ -17,7 +17,10 @@ class TicketTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'event_id' => 1,
+            'title' => $this->faker->randomElement(['Básico', 'Medio', 'Platino']),
+            'description' => $this->faker->sentence(15),
+            'price' => $this->faker->randomElement([100.00, 200.00, 300.00, 500.00]),
         ];
     }
 }

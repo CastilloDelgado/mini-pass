@@ -10,4 +10,9 @@ class Event extends Model
     protected $guarded = [];
 
     use HasFactory;
+
+    public function ticket_types()
+    {
+        return $this->hasMany(TicketType::class);
+    }
 }

@@ -6,7 +6,6 @@ import { Link } from "@inertiajs/vue3";
 
 defineProps({
     event: Object,
-    ticketTypes: Array,
 });
 </script>
 
@@ -48,7 +47,7 @@ defineProps({
                                     </tr>
                                     <tr
                                         class="border-gray border-b-2 p-6"
-                                        v-for="type in ticketTypes"
+                                        v-for="type in event.ticket_types"
                                     >
                                         <td>{{ type.title }}</td>
                                         <td>{{ type.description }}</td>
