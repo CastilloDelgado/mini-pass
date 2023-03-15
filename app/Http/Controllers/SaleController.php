@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Sale;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SaleController extends Controller
 {
@@ -29,8 +31,25 @@ class SaleController extends Controller
      */
     public function store(Request $request, Event $event)
     {
-        $user = auth()->id();
-        return ($user);
+        $sale = Sale::create([
+            'user_id' => auth()->id(),
+            'event_id' => $event->id,
+            'status' => 0
+        ]);
+
+        foreach ($request->all() as $type => $quantity) {
+            if ($quantity > 0) {
+                for ($count = 0; $count < $quantity; $count++) {
+                    Ticket::create([
+                        'uuid' => Str::uuid()->toString(),
+                        'sale_id' => $sale->id,
+                        'ticket_type_id' => $type,
+                    ]);
+                }
+            }
+        }
+
+        return ($sale);
     }
 
     /**
