@@ -20,6 +20,7 @@ class ShowEventsController extends Controller
 
     public function show(Event $event)
     {
+        $event->ticket_types;
         return Inertia::render('Billboards/Show', [
             'event' => $event
         ]);

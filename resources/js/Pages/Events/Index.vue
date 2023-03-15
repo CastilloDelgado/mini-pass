@@ -36,8 +36,8 @@ defineProps({
                                         <td>{{ event.id }}</td>
                                         <td>{{ event.title }}</td>
                                         <td>{{ event.location }}</td>
-                                        <td>{{ event.title }}</td>
-                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.date }}</td>
+                                        <td>{{ event.public_at }}</td>
                                         <td>
                                             <Link
                                                 :href="

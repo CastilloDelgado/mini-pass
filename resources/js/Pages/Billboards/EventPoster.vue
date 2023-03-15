@@ -6,10 +6,10 @@ defineProps({
 });
 </script>
 <template>
-    <Link :href="/events/ + event.id" class="w-full">
-        <div
-            class="bg-gray-200 hover:bg-gray-300 rounded-lg hover:scale-[1.03] transition"
-        >
+    <div
+        class="bg-gray-200 hover:bg-gray-300 rounded-lg hover:scale-[1.03] transition"
+    >
+        <Link :href="/events/ + event.id" class="w-full">
             <div class="flex justify-center">
                 <img
                     :src="'/storage/' + event.main_image"
@@ -19,7 +19,7 @@ defineProps({
             </div>
             <div class="flex justify-center">
                 <button
-                    class="bg-blue-500 hover:bg-blue-600 transition text-white px-3 py-1 w-full"
+                    class="bg-blue-500 transition text-white px-3 py-1 w-full"
                 >
                     Comprar entradas
                 </button>
@@ -36,6 +36,6 @@ defineProps({
                     {{ event.description }}
                 </p>
             </div>
-        </div>
-    </Link>
+        </Link>
+    </div>
 </template>
