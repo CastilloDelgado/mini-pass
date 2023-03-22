@@ -27,6 +27,9 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+
+// CUSTOMER
+
 Route::get('/', [ShowEventsController::class, 'welcome']);
 Route::get('/events/{event}', [ShowEventsController::class, 'show']);
 
@@ -55,6 +58,8 @@ Route::middleware([
 
 
 
+// ADMIN
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -75,3 +80,7 @@ Route::middleware([
     Route::get('/admin/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
     Route::post('/admin/events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
 });
+
+Route::get('admin/dashboard', function () {
+    return "Hello Admin, we are here to serve";
+})->middleware('admin');

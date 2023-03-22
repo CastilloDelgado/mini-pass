@@ -8,5 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <EventInfoLayout :event="event"> </EventInfoLayout>
+    <EventInfoLayout :event="event">
+        {{ JSON.stringify(sale) }}
+    </EventInfoLayout>
 </template>

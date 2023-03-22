@@ -58,6 +58,15 @@ class SaleController extends Controller
      */
     public function show(Event $event, Sale $sale)
     {
+        $sale->tickets;
+
+        // Adding tickets summary to sale model
+        $ticketsSummary = [];
+
+        foreach($sale->tickets as $ticket){
+            $ticketsSummary[""]["count"] = $ticketsSummary[""]["count"] + 1;
+        }
+
         return Inertia::render('Purchases/Show', [
             "event" => $event,
             "sale" => $sale
