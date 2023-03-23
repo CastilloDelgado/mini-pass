@@ -88,4 +88,4 @@ Route::middleware([
 
 Route::get('admin/dashboard', function () {
     return "Hello Admin, we are here to serve";
-})->middleware('admin');
+})->middleware('admin')->name('admin.show');
