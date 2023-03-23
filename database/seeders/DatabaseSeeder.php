@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Event;
+use App\Models\Team;
 use App\Models\TicketType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -15,12 +16,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Team::factory()->create([
+            'user_id' => 1,
+            'name' => "Basic team",
+            'personal_team' => 1
+        ]);
 
-        // User::factory()->create([
-        //     'name' => 'Marco Castillo',
-        //     'email' => 'marco.castillo@emergys.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Marco Admin',
+            'email' => 'marco.admin@test.com',
+            'current_team_id' => 1,
+            'is_admin' => TRUE
+        ]);
+
+        User::factory()->create([
+            'name' => 'Marco Cliente',
+            'email' => 'marco.cliente@test.com',
+            'current_team_id' => 1,
+            'is_admin' => FALSE
+        ]);
 
         Event::factory(30)->create();
 

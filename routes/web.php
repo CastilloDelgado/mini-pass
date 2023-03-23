@@ -27,11 +27,16 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+// General routes
+Route::get('/', function () {
+    return "Vista de eventos";
+});
+
 
 // CUSTOMER
 
-Route::get('/', [ShowEventsController::class, 'welcome']);
-Route::get('/events/{event}', [ShowEventsController::class, 'show']);
+// Route::get('/', [ShowEventsController::class, 'welcome']);
+// Route::get('/events/{event}', [ShowEventsController::class, 'show']);
 
 Route::middleware([
     'auth:sanctum',
