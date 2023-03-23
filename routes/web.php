@@ -11,20 +11,7 @@ use Inertia\Inertia;
 Route::get('/', [ShowEventsController::class, 'welcome'])->name('welcome');
 
 // Customer Routes
-// Route::get('/events/{event}', [ShowEventsController::class, 'show']);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get(
-        '/dashboard',
-        function () {
-            return Inertia::render('Dashboard');
-        }
-    )->name('dashboard');
-});
+Route::get('/events/{event}', [ShowEventsController::class, 'show']);
 
 // Sales - Purchases
 Route::middleware([
@@ -47,7 +34,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::post('events', [EventController::class, 'store'])->name('admin.events.store');
 
     // Ticket types CRUD
-    Route::get('/admin/events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
-    Route::get('/admin/events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
-    Route::post('/admin/events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
+    Route::get('events/{event}/ticket-types', [TicketTypeController::class, 'index'])->name('ticket-types.index');
+    Route::get('events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
+    Route::post('events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
 });

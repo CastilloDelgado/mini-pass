@@ -30,7 +30,7 @@ defineProps({
                                 <PrimaryButton>
                                     <Link
                                         :href="
-                                            '/events/' +
+                                            '/admin/events/' +
                                             event.id +
                                             '/ticket-types/create'
                                         "

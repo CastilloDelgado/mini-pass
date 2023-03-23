@@ -31,9 +31,7 @@ defineProps({
                                 <PrimaryButton>
                                     <Link
                                         :href="
-                                            '/events/' +
-                                            event.id +
-                                            '/ticket-types'
+                                            route('ticket-types.index', event)
                                         "
                                     >
                                         Regresar
