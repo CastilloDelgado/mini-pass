@@ -17,7 +17,7 @@ class IsAdmin
     {
         $user = auth()->user();
 
-        if ($user->is_admin === 0) {
+        if (!$user || $user->is_admin === 0) {
             abort(Response::HTTP_FORBIDDEN);
         }
 

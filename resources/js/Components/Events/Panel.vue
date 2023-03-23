@@ -21,16 +21,16 @@ import PanelOption from "./PanelOption.vue";
                 <ul class="mt-8">
                     <li class="mb-2 text-md">
                         <PanelOption
-                            :href="route('events.index')"
-                            :active="route().current('events.*')"
+                            :href="route('admin.events.index')"
+                            :active="route().current('admin.events.index')"
                         >
                             Mis eventos
                         </PanelOption>
                     </li>
                     <li class="mb-2 text-md">
                         <PanelOption
-                            :href="route('events.create')"
-                            :active="route().current('events.create')"
+                            :href="route('admin.events.create')"
+                            :active="route().current('admin.events.create')"
                         >
                             Crear evento
                         </PanelOption>

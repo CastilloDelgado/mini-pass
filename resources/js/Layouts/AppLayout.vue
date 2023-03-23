@@ -50,24 +50,29 @@ const logout = () => {
                                 </Link>
                             </div>
 
-                            <!-- Navigation Links -->
+                            <!-- Navigation Links for Admin -->
                             <div
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                                v-if="$page.props.auth?.user?.is_admin === 1"
                             >
-                                <!-- <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Dashboard
-                                </NavLink> -->
                                 <NavLink
-                                    :href="route('events.index')"
-                                    :active="route().current('events.*')"
+                                    :href="route('admin.events.index')"
+                                    :active="route().current('admin.events.*')"
                                 >
                                     Eventos
                                 </NavLink>
-                                <NavLink> Usuarios </NavLink>
-                                <NavLink> Ventas </NavLink>
+                            </div>
+                            <!-- Navigation Links for for Customers -->
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                                v-if="$page.props.auth?.user?.is_admin !== 1"
+                            >
+                                <NavLink
+                                    :href="route('welcome')"
+                                    :active="route().current('welcome')"
+                                >
+                                    Proximos Eventos
+                                </NavLink>
                             </div>
                         </div>
 
@@ -76,27 +81,8 @@ const logout = () => {
                             <div class="ml-3 relative">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
-                                        <button
-                                            v-if="
-                                                $page.props.jetstream
-                                                    .managesProfilePhotos
-                                            "
-                                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition"
-                                        >
-                                            <img
-                                                class="h-8 w-8 rounded-full object-cover"
-                                                :src="
-                                                    $page.props.auth.user
-                                                        .profile_photo_url
-                                                "
-                                                :alt="
-                                                    $page.props.auth.user.name
-                                                "
-                                            />
-                                        </button>
-
                                         <span
-                                            v-else
+                                            v-if="$page.props.auth.user"
                                             class="inline-flex rounded-md"
                                         >
                                             <button
@@ -123,6 +109,21 @@ const logout = () => {
                                                     />
                                                 </svg>
                                             </button>
+                                        </span>
+                                        <span
+                                            v-else
+                                            class="inline-flex rounded-md"
+                                        >
+                                            <Link
+                                                :href="route('login')"
+                                                class="mr-3 text-sm hover:underline"
+                                                >Iniciar Sesión</Link
+                                            >
+                                            <Link
+                                                :href="route('register')"
+                                                class="text-sm hover:underline"
+                                                >Registrate</Link
+                                            >
                                         </span>
                                     </template>
 
@@ -224,7 +225,10 @@ const logout = () => {
                     </div>
 
                     <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div
+                        class="pt-4 pb-1 border-t border-gray-200"
+                        v-if="$page.props.auth.user"
+                    >
                         <div class="flex items-center px-4">
                             <div
                                 v-if="
@@ -245,10 +249,12 @@ const logout = () => {
                                 <div
                                     class="font-medium text-base text-gray-800"
                                 >
-                                    {{ $page.props.auth.user.name }}
+                                    <!-- {{ $page.props.auth.user.name }} -->
+                                    Nombre
                                 </div>
                                 <div class="font-medium text-sm text-gray-500">
-                                    {{ $page.props.auth.user.email }}
+                                    <!-- {{ $page.props.auth.user.email }} -->
+                                    Email
                                 </div>
                             </div>
                         </div>
@@ -275,82 +281,6 @@ const logout = () => {
                                     Log Out
                                 </ResponsiveNavLink>
                             </form>
-
-                            <!-- Team Management -->
-                            <template
-                                v-if="$page.props.jetstream.hasTeamFeatures"
-                            >
-                                <div class="border-t border-gray-200" />
-
-                                <div
-                                    class="block px-4 py-2 text-xs text-gray-400"
-                                >
-                                    Manage Team
-                                </div>
-
-                                <!-- Team Settings -->
-                                <ResponsiveNavLink
-                                    :href="
-                                        route(
-                                            'teams.show',
-                                            $page.props.auth.user.current_team
-                                        )
-                                    "
-                                    :active="route().current('teams.show')"
-                                >
-                                    Team Settings
-                                </ResponsiveNavLink>
-
-                                <ResponsiveNavLink
-                                    v-if="$page.props.jetstream.canCreateTeams"
-                                    :href="route('teams.create')"
-                                    :active="route().current('teams.create')"
-                                >
-                                    Create New Team
-                                </ResponsiveNavLink>
-
-                                <div class="border-t border-gray-200" />
-
-                                <!-- Team Switcher -->
-                                <div
-                                    class="block px-4 py-2 text-xs text-gray-400"
-                                >
-                                    Switch Teams
-                                </div>
-
-                                <template
-                                    v-for="team in $page.props.auth.user
-                                        .all_teams"
-                                    :key="team.id"
-                                >
-                                    <form @submit.prevent="switchToTeam(team)">
-                                        <ResponsiveNavLink as="button">
-                                            <div class="flex items-center">
-                                                <svg
-                                                    v-if="
-                                                        team.id ==
-                                                        $page.props.auth.user
-                                                            .current_team_id
-                                                    "
-                                                    class="mr-2 h-5 w-5 text-green-400"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke-width="1.5"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                    />
-                                                </svg>
-                                                <div>{{ team.name }}</div>
-                                            </div>
-                                        </ResponsiveNavLink>
-                                    </form>
-                                </template>
-                            </template>
                         </div>
                     </div>
                 </div>

@@ -8,8 +8,8 @@ class LoginResponse implements LoginResponseContract
 {
   public function toResponse($request)
   {
-    $home = (auth()->user()->is_admin === 1) ? '/admin/events' : '/';
+    $redirectTo = (auth()->user()->is_admin === 1) ? 'admin.events.index' : 'welcome';
 
-    return redirect($home);
+    return redirect()->route($redirectTo);
   }
 }
