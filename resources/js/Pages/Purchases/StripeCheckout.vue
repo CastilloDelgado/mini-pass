@@ -1,6 +1,10 @@
 <template>
     <div>
-        <stripe-checkout ref="checkoutRef" :pk="publishableKey" />
+        <stripe-checkout
+            ref="checkoutRef"
+            :pk="publishableKey"
+            :sessionId="sessionId"
+        />
         <button
             @click="submit"
             class="bg-green-600 font-bold px-8 py-2 rounded-lg text-white hover:scale-[1.05] hover:bg-green-700 transition"
@@ -19,6 +23,7 @@ export default {
 
     data() {
         return {
+            sessionId: null,
             publishableKey:
                 "pk_test_51Mq9wQFRY0xDs6dWnMwl4TfVlQwHmjS3sORzXJvkT2FJXUeAfVqEKRmiR11xV6x7qVxHaqA99hwz0EYqFO5lfSJw00NsrChguz",
         };
@@ -32,7 +37,9 @@ export default {
         getSession() {
             axios
                 .get("http://localhost:8000/getSession")
-                .then((response) => console.log(response))
+                .then((response) => {
+                    this.sessionId = response.data.id;
+                })
                 .catch((error) => console.log(error));
         },
 
