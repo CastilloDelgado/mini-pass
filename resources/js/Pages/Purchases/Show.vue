@@ -1,6 +1,7 @@
 <script setup>
 import EventInfoLayout from "@/Layouts/EventInfoLayout.vue";
 import TicketsTable from "./TicketsTable.vue";
+import StripeCheckout from "./StripeCheckout.vue";
 
 defineProps({
     event: Object,
@@ -11,5 +12,6 @@ defineProps({
 <template>
     <EventInfoLayout :event="event">
         <TicketsTable :table="sale.table" :total="sale.total" />
+        <StripeCheckout />
     </EventInfoLayout>
 </template>

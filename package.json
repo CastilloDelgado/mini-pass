@@ -18,6 +18,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
-        "@heroicons/vue": "^2.0.16"
+        "@heroicons/vue": "^2.0.16",
+        "@vue-stripe/vue-stripe": "^4.5.0"
     }
 }
