@@ -3,9 +3,9 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ShowEventsController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TicketTypeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // General Routes
 Route::get('/', [ShowEventsController::class, 'welcome'])->name('welcome');
@@ -23,7 +23,7 @@ Route::middleware([
     Route::post('/events/{event}/purchases', [SaleController::class, 'store'])->name('sales.store');
 });
 
-
+Route::get('/getSession', [StripeController::class, 'getSession']);
 
 // Admin Routes
 Route::prefix('admin')->middleware(['admin'])->group(function () {

@@ -19,11 +19,23 @@ export default {
 
     data() {
         return {
-            publishableKey: "",
+            publishableKey:
+                "pk_test_51Mq9wQFRY0xDs6dWnMwl4TfVlQwHmjS3sORzXJvkT2FJXUeAfVqEKRmiR11xV6x7qVxHaqA99hwz0EYqFO5lfSJw00NsrChguz",
         };
     },
 
+    mounted() {
+        this.getSession();
+    },
+
     methods: {
+        getSession() {
+            axios
+                .get("http://localhost:8000/getSession")
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
+        },
+
         submit() {
             this.$refs.checkoutRef.redirectToCheckout();
         },
