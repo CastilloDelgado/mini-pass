@@ -1,5 +1,6 @@
 <script setup>
 import EventInfoLayout from "@/Layouts/EventInfoLayout.vue";
+import TicketsTable from "./TicketsTable.vue";
 
 defineProps({
     event: Object,
@@ -9,6 +10,6 @@ defineProps({
 
 <template>
     <EventInfoLayout :event="event">
-        {{ JSON.stringify(sale) }}
+        <TicketsTable :table="sale.table" :total="sale.total" />
     </EventInfoLayout>
 </template>

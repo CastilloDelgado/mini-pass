@@ -22,7 +22,7 @@ const form = useForm({ ...emptyForm });
     <div class="mt-5">
         <p class="text-2xl font-bold">Selecciona tus entradas</p>
         <form @submit.prevent="submit">
-            <table class="w-full mt-4">
+            <table class="w-full mt-4 text-sm">
                 <thead class="bg-blue-500 text-white">
                     <tr>
                         <th class="w-44">Tipo de Entrada</th>
@@ -40,7 +40,11 @@ const form = useForm({ ...emptyForm });
                         <td class="p-3">{{ type.description }}</td>
                         <td class="p-3">${{ type.price }} MX</td>
                         <td class="p-3 flex justify-center">
-                            <select :id="type.id" v-model="form[type.id]">
+                            <select
+                                :id="type.id"
+                                v-model="form[type.id]"
+                                class="text-sm"
+                            >
                                 <option :value="0">0</option>
                                 <option :value="1">1</option>
                                 <option :value="2">2</option>
