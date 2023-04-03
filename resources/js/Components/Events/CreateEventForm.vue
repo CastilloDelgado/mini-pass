@@ -19,12 +19,12 @@ const form = useForm({
     country: "",
     state: "",
     city: "",
-    postal_code: "",
+    post_code: "",
     status: "",
 });
 
 const submit = () => {
-    form.post(route("events.store"));
+    form.post(route("admin.events.store"));
 };
 </script>
 
@@ -185,13 +185,13 @@ const submit = () => {
                 />
             </div>
             <div class="w-full">
-                <InputLabel for="postal_code" value="Código postal" />
+                <InputLabel for="post_code" value="Código postal" />
                 <TextInput
-                    id="postal_code"
+                    id="post_code"
                     type="text"
                     class="mt-1 block w-full"
                     required
-                    v-model="form.postal_code"
+                    v-model="form.post_code"
                 />
             </div>
         </div>

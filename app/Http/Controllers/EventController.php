@@ -44,8 +44,10 @@ class EventController extends Controller
             'country' => 'required',
             'state' => 'required',
             'city' => 'required',
-            'postal_code' => 'required',
+            'post_code' => 'required',
         ]);
+
+        $attributes['created_by'] = $request->user()->id;
 
         $attributes["main_image"] = $request->file('main_image')->store('events');
 
