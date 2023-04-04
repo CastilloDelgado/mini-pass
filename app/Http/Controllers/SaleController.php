@@ -138,9 +138,36 @@ class SaleController extends Controller
         //
     }
 
-    public function confirm(Request $request)
+    public function confirm(Sale $sale, Request $request)
     {
+        $sale->tickets;
+        $tickets = $sale->tickets;
+        $ticketsSummary = [];
 
-        Mail::to($request->user())->send(new OrderShipped());
+        foreach ($tickets as $ticket) {
+            if (isset($ticketsSummary[$ticket->ticket_type_id])) {
+                $ticketsSummary[$ticket->ticket_type_id] += 1;
+            } else {
+                $ticketsSummary[$ticket->ticket_type_id] = 1;
+            }
+        }
+
+        $saleSummary = [];
+        $total = 0;
+
+        foreach ($ticketsSummary as $type => $quantity) {
+            $ticketType = TicketType::find($type);
+            $total += ($ticketType->price + ($ticketType->price * 0.2)) * $quantity;
+            $saleSummary[] = [
+                "title" => $ticketType->title,
+                "description" => $ticketType->description,
+                "price" => $ticketType->price,
+                "charge" => $ticketType->price * 0.2,
+                "quantity" => $quantity,
+                "total" => ($ticketType->price + ($ticketType->price * 0.2)) * $quantity,
+            ];
+        }
+
+        Mail::to($request->user())->send(new OrderShipped($sale->event->title, $saleSummary, $total));
     }
 }

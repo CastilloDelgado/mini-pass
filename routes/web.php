@@ -22,6 +22,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/events/{event}/purchases/{sale}', [SaleController::class, 'show'])->name('sales.show');
     Route::post('/events/{event}/purchases', [SaleController::class, 'store'])->name('sales.store');
+
+    // Email Test
+    Route::get('/purchases/{sale}', [SaleController::class, 'confirm'])->name('purchase.success');
 });
 
 // Admin Routes
@@ -41,9 +44,5 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 // Stripe Routes
 Route::get('/getSession/{sale}', [StripeController::class, 'getSession'])->name('get-session');
 
-Route::get('/purchase/{sale}/success', [SaleController::class, 'success'])->name('purchase.success');
 Route::get('/purchase/{sale}/cancel', [SaleController::class, 'cancel'])->name('purchase.cancel');
 Route::get('/purchase/{sale}/fail', [SaleController::class, 'fail'])->name('purchase.fail');
-
-// Email Test
-Route::get('/email-test', [SaleController::class, 'confirm']);

@@ -63,8 +63,7 @@ class StripeController extends Controller
             $stripe = new \Stripe\StripeClient(config('app.stripe_secret'));
 
             $checkout = $stripe->checkout->sessions->create([
-                'success_url' => route('purchase.success'),
-                'cancel_url' => route('purchase.cancel'),
+                'success_url' => route('purchase.success', $sale),
                 'line_items' => $lineItems,
                 'mode' => 'payment',
             ]);
