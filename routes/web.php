@@ -39,3 +39,15 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
 // Stripe Routes
 Route::get('/getSession/{sale}', [StripeController::class, 'getSession'])->name('get-session');
+
+Route::get('/stripe/success', function () {
+    return ([
+        "data" => "Success!!!"
+    ]);
+})->name('stripe.checkout.success');
+
+Route::get('/stripe/fail', function () {
+    return ([
+        "data" => "Fail :("
+    ]);
+})->name('stripe.checkout.fail');

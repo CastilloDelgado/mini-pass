@@ -129,13 +129,11 @@ class StripeController extends Controller
         }
 
         $checkout = $stripe->checkout->sessions->create([
-            'success_url' => 'https://localhost:8000/success',
+            'success_url' => route('stripe.checkout.success'),
             'line_items' => $lineItems,
             'mode' => 'payment',
         ]);
 
         return $checkout;
-
-        return $lineItems;
     }
 }
