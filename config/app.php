@@ -219,12 +219,4 @@ return [
     'stripe_publish' => env('STRIPE_PUBLISH'),
     'stripe_secret' => env('STRIPE_SECRET'),
 
-    // Mailgun
-    'mailgun' => [
-        'key' => env('MAILGUN_KEY'),
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
-        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
-        'scheme' => 'https',
-    ],
 ];

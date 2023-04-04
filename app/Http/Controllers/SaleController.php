@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use App\Models\Event;
 use App\Models\Sale;
 use App\Models\Ticket;
 use App\Models\TicketType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -136,15 +138,9 @@ class SaleController extends Controller
         //
     }
 
-    public function confirm()
+    public function confirm(Request $request)
     {
-        $mg = Mailgun::create(config('app.mailgun.key'));
 
-        $mg->messages()->send('minipass.online', [
-            'from' => 'contacto@minipass.online',
-            'to' => 'marcocastillo1997@gmail.com',
-            'subject' => 'The PHP SDK is awesome!',
-            'text' => 'It is so simple to send a message.'
-        ]);
+        Mail::to($request->user())->send(new OrderShipped());
     }
 }
