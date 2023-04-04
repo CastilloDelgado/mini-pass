@@ -1,11 +1,12 @@
 <?php
-
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ShowEventsController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TicketTypeController;
 use Illuminate\Support\Facades\Route;
+use Mailgun\Mailgun;
+
 
 // General Routes
 Route::get('/', [ShowEventsController::class, 'welcome'])->name('welcome');
@@ -40,14 +41,9 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 // Stripe Routes
 Route::get('/getSession/{sale}', [StripeController::class, 'getSession'])->name('get-session');
 
-Route::get('/stripe/success', function () {
-    return ([
-        "data" => "Success!!!"
-    ]);
-})->name('stripe.checkout.success');
+Route::get('/purchase/{sale}/success', [SaleController::class, 'success'])->name('purchase.success');
+Route::get('/purchase/{sale}/cancel', [SaleController::class, 'cancel'])->name('purchase.cancel');
+Route::get('/purchase/{sale}/fail', [SaleController::class, 'fail'])->name('purchase.fail');
 
-Route::get('/stripe/fail', function () {
-    return ([
-        "data" => "Fail :("
-    ]);
-})->name('stripe.checkout.fail');
+// Email Test
+Route::get('/email-test', [SaleController::class, 'confirm']);

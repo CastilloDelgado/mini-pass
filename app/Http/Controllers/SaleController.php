@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Event;
@@ -11,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Mailgun\Mailgun;
 
 class SaleController extends Controller
 {
@@ -134,5 +134,17 @@ class SaleController extends Controller
     public function destroy(Sale $sale)
     {
         //
+    }
+
+    public function confirm()
+    {
+        $mg = Mailgun::create(config('app.mailgun.key'));
+
+        $mg->messages()->send('minipass.online', [
+            'from' => 'contacto@minipass.online',
+            'to' => 'marcocastillo1997@gmail.com',
+            'subject' => 'The PHP SDK is awesome!',
+            'text' => 'It is so simple to send a message.'
+        ]);
     }
 }
