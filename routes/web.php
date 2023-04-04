@@ -23,8 +23,6 @@ Route::middleware([
     Route::post('/events/{event}/purchases', [SaleController::class, 'store'])->name('sales.store');
 });
 
-Route::get('/getSession', [StripeController::class, 'getSession']);
-
 // Admin Routes
 Route::prefix('admin')->middleware(['admin'])->group(function () {
     // Events CRUD
@@ -38,3 +36,6 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::get('events/{event}/ticket-types/create', [TicketTypeController::class, 'create'])->name('ticket-types.create');
     Route::post('events/{event}/ticket-types', [TicketTypeController::class, 'store'])->name('ticket-types.store');
 });
+
+// Stripe Routes
+Route::get('/getSession/{sale}', [StripeController::class, 'getSession'])->name('get-session');

@@ -17,6 +17,10 @@
 <script>
 import { StripeCheckout } from "@vue-stripe/vue-stripe";
 export default {
+    props: {
+        sale: Object,
+    },
+
     components: {
         StripeCheckout,
     },
@@ -36,7 +40,7 @@ export default {
     methods: {
         getSession() {
             axios
-                .get("http://localhost:8000/getSession")
+                .get(route("get-session", this.$props.sale.id))
                 .then((response) => {
                     this.sessionId = response.data.id;
                 })

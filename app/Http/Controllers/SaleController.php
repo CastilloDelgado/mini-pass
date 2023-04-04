@@ -61,9 +61,7 @@ class SaleController extends Controller
      */
     public function show(Event $event, Sale $sale)
     {
-        $sale->tickets;
-
-        $tickets = $sale->tickets;
+        // Adding public image url
         $event["public_url"] = Storage::disk('s3')->temporaryUrl($event->main_image, now()->addMinutes(5));
 
         // Get price range
@@ -80,6 +78,8 @@ class SaleController extends Controller
         ];
 
         // Adding tickets summary to sale model
+        $sale->tickets;
+        $tickets = $sale->tickets;
         $ticketsSummary = [];
 
         foreach ($tickets as $ticket) {
@@ -108,7 +108,7 @@ class SaleController extends Controller
 
         return Inertia::render('Purchases/Show', [
             "event" => $event,
-            "sale" => ["table" => $saleSummary, "total" => $total]
+            "sale" => ["table" => $saleSummary, "total" => $total, "info" => $sale]
         ]);
     }
 

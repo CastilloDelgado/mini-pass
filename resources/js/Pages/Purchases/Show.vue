@@ -12,6 +12,6 @@ defineProps({
 <template>
     <EventInfoLayout :event="event">
         <TicketsTable :table="sale.table" :total="sale.total" />
-        <StripeCheckout />
+        <StripeCheckout :sale="sale.info" />
     </EventInfoLayout>
 </template>

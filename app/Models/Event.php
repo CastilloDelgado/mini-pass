@@ -15,4 +15,10 @@ class Event extends Model
     {
         return $this->hasMany(TicketType::class);
     }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
 }
