@@ -11,7 +11,9 @@ defineProps({
 </script>
 <template>
     <div>
-        <p class="text-4xl font-bold">{{ event.title }}</p>
+        <p class="text-4xl font-bold text-center lg:text-left mb-4">
+            {{ event.title }}
+        </p>
         <div class="flex flex-row">
             <p class="text-lg">Fecha del evento:</p>
             <p class="text-lg ml-2 font-bold">
