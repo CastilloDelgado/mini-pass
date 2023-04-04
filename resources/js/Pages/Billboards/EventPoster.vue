@@ -12,7 +12,7 @@ defineProps({
         <Link :href="/events/ + event.id" class="w-full">
             <div class="flex justify-center">
                 <img
-                    :src="'/storage/' + event.main_image"
+                    :src="event.public_url"
                     alt=""
                     class="object-cover h-80 object-cover w-full"
                 />
