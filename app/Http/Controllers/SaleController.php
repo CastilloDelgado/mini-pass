@@ -7,6 +7,7 @@ use App\Models\Sale;
 use App\Models\Ticket;
 use App\Models\TicketType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -64,6 +65,19 @@ class SaleController extends Controller
 
         $tickets = $sale->tickets;
         $event["public_url"] = Storage::disk('s3')->temporaryUrl($event->main_image, now()->addMinutes(5));
+
+        // Get price range
+        $prices = DB::table('ticket_types')->select('price')->where('event_id', $event->id)->get();
+        $priceValues = [];
+
+        foreach ($prices as $price) {
+            $priceValues[] = $price->price;
+        }
+
+        $event["prices"] = [
+            "min" => min($priceValues),
+            "max" => max($priceValues)
+        ];
 
         // Adding tickets summary to sale model
         $ticketsSummary = [];

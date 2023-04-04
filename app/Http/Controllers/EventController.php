@@ -53,7 +53,7 @@ class EventController extends Controller
 
         $event = Event::create($attributes);
 
-        return $event;
+        return to_route('admin.events.index');
     }
 
     /**

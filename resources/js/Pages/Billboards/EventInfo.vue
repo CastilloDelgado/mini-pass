@@ -37,7 +37,9 @@ defineProps({
         <div class="flex flex-row mt-2">
             <TicketIcon class="h-6 w-6 text-gray-400" />
             <p class="ml-2 font-bold">Rango de precios:</p>
-            <p class="ml-2">$200.00 - $600.00 MX</p>
+            <p class="ml-2">
+                {{ `De $${event.prices.min} MX a $${event.prices.max}  MX` }}
+            </p>
         </div>
     </div>
 </template>

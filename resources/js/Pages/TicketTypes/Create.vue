@@ -1,7 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Panel from "@/Components/Events/Panel.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import CreateTicketTypeForm from "@/Components/TicketTypes/CreateTicketTypeForm.vue";
 import { Link } from "@inertiajs/vue3";
 

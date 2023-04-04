@@ -48,7 +48,7 @@ class TicketTypeController extends Controller
 
         $ticketType = TicketType::create($attributes);
 
-        return $ticketType;
+        return to_route('ticket-types.index', $event);
     }
 
     /**
