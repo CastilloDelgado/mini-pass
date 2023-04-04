@@ -12,5 +12,5 @@ environments:
       - "composer install --no-dev"
       - "php artisan event:cache"
       - "npm run build && rm -rf node_modules"
-    deploy:
-      - "php artisan migrate:fresh --seed --force"
+    # deploy:
+    # - "php artisan migrate:fresh --seed --force"

@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Panel from "@/Components/Events/Panel.vue";
 import { Link } from "@inertiajs/vue3";
+import { format } from "date-fns";
 
 defineProps({
     events: Array,
@@ -23,32 +24,63 @@ defineProps({
                                 </p>
                             </div>
                             <div class="mt-6">
-                                <table class="w-full text-left overflow-y-auto">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Evento</th>
-                                        <th>Locación</th>
-                                        <th>Fecha del evento</th>
-                                        <th>Fecha de publicación</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    <tr v-for="event in events" class="p-2">
-                                        <td>{{ event.id }}</td>
-                                        <td>{{ event.title }}</td>
-                                        <td>{{ event.location }}</td>
-                                        <td>{{ event.date }}</td>
-                                        <td>{{ event.public_at }}</td>
-                                        <td>
-                                            <Link
-                                                :href="
-                                                    '/admin/events/' + event.id
-                                                "
-                                                class="text-sky-700 underline"
+                                <table
+                                    class="w-full text-left overflow-y-auto text-sm border-b-2 border-gray"
+                                >
+                                    <thead class="bg-blue-500 text-white">
+                                        <tr>
+                                            <th class="p-2">ID</th>
+                                            <th class="p-2">Evento</th>
+                                            <th class="p-2">Locación</th>
+                                            <th class="p-2">
+                                                Fecha del evento
+                                            </th>
+                                            <th class="p-2">Estado</th>
+                                            <th class="p-2">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(event, index) in events"
+                                            :class="`${
+                                                index % 2 ? 'bg-gray-100' : ''
+                                            } p-2`"
+                                        >
+                                            <td
+                                                class="text-center font-bold p-1"
                                             >
-                                                Editar
-                                            </Link>
-                                        </td>
-                                    </tr>
+                                                {{ event.id }}
+                                            </td>
+                                            <td class="w-80 p-1">
+                                                {{ event.title }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{ event.location }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{
+                                                    format(
+                                                        new Date(event.date),
+                                                        "dd/M/yyyy"
+                                                    )
+                                                }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{ event.status }}
+                                            </td>
+                                            <td class="p-1">
+                                                <Link
+                                                    :href="
+                                                        '/admin/events/' +
+                                                        event.id
+                                                    "
+                                                    class="text-sky-700 underline"
+                                                >
+                                                    Editar
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

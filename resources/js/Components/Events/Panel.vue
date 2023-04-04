@@ -38,7 +38,7 @@ import PanelOption from "./PanelOption.vue";
                 </ul>
             </div>
 
-            <div class="w-full md:w-2/3">
+            <div class="w-full">
                 <slot />
             </div>
         </div>

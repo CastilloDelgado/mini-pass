@@ -27,15 +27,17 @@ defineProps({
                                 </p>
                             </div>
                             <div class="mt-5">
-                                <Link
-                                    :href="
-                                        '/admin/events/' +
-                                        event.id +
-                                        '/ticket-types'
-                                    "
-                                >
-                                    Entradas
-                                </Link>
+                                <PrimaryButton>
+                                    <Link
+                                        :href="
+                                            '/admin/events/' +
+                                            event.id +
+                                            '/ticket-types'
+                                        "
+                                    >
+                                        Crear Entradas
+                                    </Link>
+                                </PrimaryButton>
                             </div>
                         </div>
                     </Panel>

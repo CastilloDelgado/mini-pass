@@ -7,7 +7,7 @@ defineProps({
 <template>
     <div class="border-t-2 border-gray-200 py-4 mt-6">
         <p class="text-2xl font-bold mb-2">Desglose de la compra</p>
-        <table class="w-full text-sm">
+        <table class="w-full">
             <thead class="bg-blue-500 text-white">
                 <tr>
                     <th class="p-1">Tipo de boleto</th>

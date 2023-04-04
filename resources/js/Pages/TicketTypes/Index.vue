@@ -38,24 +38,44 @@ defineProps({
                                         Crear un tipo de entrada
                                     </Link>
                                 </PrimaryButton>
-                                <table class="w-full text-left">
-                                    <tr>
-                                        <th>Tipo</th>
-                                        <th>Descripción</th>
-                                        <th>Precio</th>
-                                        <th>Cantidad disponible inicial</th>
-                                    </tr>
-                                    <tr
-                                        class="border-gray border-b-2 p-6"
-                                        v-for="type in event.ticket_types"
-                                    >
-                                        <td>{{ type.title }}</td>
-                                        <td>{{ type.description }}</td>
-                                        <td>
-                                            {{ `$ ${type.price} MXN` }}
-                                        </td>
-                                        <td>{{ type.quantity }}</td>
-                                    </tr>
+                                <table
+                                    class="w-full text-left text-sm mt-5 border-b-2 border-gray"
+                                >
+                                    <thead class="bg-blue-500 text-white">
+                                        <tr>
+                                            <th class="p-2">Tipo</th>
+                                            <th class="p-2">Descripción</th>
+                                            <th class="p-2">Precio</th>
+                                            <th class="p-2">
+                                                Cantidad disponible inicial
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                type, index
+                                            ) in event.ticket_types"
+                                            :class="
+                                                index % 2 !== 0
+                                                    ? 'bg-gray-100'
+                                                    : ''
+                                            "
+                                        >
+                                            <td class="p-1">
+                                                {{ type.title }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{ type.description }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{ `$ ${type.price} MXN` }}
+                                            </td>
+                                            <td class="p-1">
+                                                {{ type.quantity }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

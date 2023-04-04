@@ -28,7 +28,9 @@ defineProps({
                             </div>
 
                             <div class="mt-6">
-                                <PrimaryButton>
+                                <button
+                                    class="bg-gray-500 text-white rounded-lg px-3 py-1"
+                                >
                                     <Link
                                         :href="
                                             route('ticket-types.index', event)
@@ -36,9 +38,11 @@ defineProps({
                                     >
                                         Regresar
                                     </Link>
-                                </PrimaryButton>
+                                </button>
 
-                                <CreateTicketTypeForm :event="event" />
+                                <div class="mt-5">
+                                    <CreateTicketTypeForm :event="event" />
+                                </div>
                             </div>
                         </div>
                     </Panel>
