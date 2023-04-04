@@ -1,6 +1,5 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import PrimaryButton from "../../Components/PrimaryButton.vue";
 
 const props = defineProps({
     event: Object,

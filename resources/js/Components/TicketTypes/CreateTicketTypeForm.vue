@@ -17,7 +17,11 @@ const form = useForm({
 </script>
 
 <template>
-    <form @submit.prevent="form.post('/events/' + event.id + '/ticket-types')">
+    <form
+        @submit.prevent="
+            form.post('/admin/events/' + event.id + '/ticket-types')
+        "
+    >
         <!-- Información general del evento -->
 
         <div class="mb-4">

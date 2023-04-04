@@ -26,6 +26,8 @@ class ShowEventsController extends Controller
     public function show(Event $event)
     {
         $event->ticket_types;
+        $event["public_url"] = Storage::disk('s3')->temporaryUrl($event->main_image, now()->addMinutes(5));
+
         return Inertia::render('Billboards/Show', [
             'event' => $event
         ]);
