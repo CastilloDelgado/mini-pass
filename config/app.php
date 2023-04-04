@@ -217,5 +217,6 @@ return [
 
     // Stripe
     'stripe_key' => env('STRIPE_KEY'),
+    'stripe_publish' => env('STRIPE_PUBLISH'),
     'stripe_secret' => env('STRIPE_SECRET')
 ];

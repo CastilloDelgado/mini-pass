@@ -28,8 +28,7 @@ export default {
     data() {
         return {
             sessionId: null,
-            publishableKey:
-                "pk_test_51Mq9wQFRY0xDs6dWnMwl4TfVlQwHmjS3sORzXJvkT2FJXUeAfVqEKRmiR11xV6x7qVxHaqA99hwz0EYqFO5lfSJw00NsrChguz",
+            publishableKey: this.$inertia.page.props.stripe_publish,
         };
     },
 
