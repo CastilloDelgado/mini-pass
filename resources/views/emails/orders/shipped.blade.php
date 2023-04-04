@@ -2,7 +2,7 @@
   Resumen de tu compra para el evento:
   <h3 class="evento-titulo">{{ $title }}</h3>
 
-  Aquí puedes ver el desgloce de tu compra en minipass.online
+  Aquí puedes ver el desglose de tu compra en minipass.online
 
   <table>
     <thead class="table-header">
