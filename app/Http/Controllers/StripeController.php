@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sale;
 use App\Models\TicketType;
-use Illuminate\Http\Request;
+use Exception;
 
 class StripeController extends Controller
 {
@@ -77,63 +77,69 @@ class StripeController extends Controller
 
     public function getSession(Sale $sale)
     {
-        $stripe = new \Stripe\StripeClient(env('STRIPE_API_KEY'));
+        try {
 
-        // Adding tickets summary to sale model
-        $sale->tickets;
-        $tickets = $sale->tickets;
-        $ticketsSummary = [];
 
-        foreach ($tickets as $ticket) {
-            if (isset($ticketsSummary[$ticket->ticket_type_id])) {
-                $ticketsSummary[$ticket->ticket_type_id] += 1;
-            } else {
-                $ticketsSummary[$ticket->ticket_type_id] = 1;
+            $stripe = new \Stripe\StripeClient(env('STRIPE_API_KEY'));
+
+            // Adding tickets summary to sale model
+            $sale->tickets;
+            $tickets = $sale->tickets;
+            $ticketsSummary = [];
+
+            foreach ($tickets as $ticket) {
+                if (isset($ticketsSummary[$ticket->ticket_type_id])) {
+                    $ticketsSummary[$ticket->ticket_type_id] += 1;
+                } else {
+                    $ticketsSummary[$ticket->ticket_type_id] = 1;
+                }
             }
-        }
 
-        $saleSummary = [];
-        $total = 0;
+            $saleSummary = [];
+            $total = 0;
 
-        foreach ($ticketsSummary as $type => $quantity) {
-            $ticketType = TicketType::find($type);
-            $total += ($ticketType->price + ($ticketType->price * 0.2)) * $quantity;
-            $saleSummary[] = [
-                "title" => $ticketType->title,
-                "description" => $ticketType->description,
-                "price" => $ticketType->price,
-                "charge" => $ticketType->price * 0.2,
-                "quantity" => $quantity,
-                "total" => ($ticketType->price + ($ticketType->price * 0.2)) * $quantity,
-            ];
-        }
+            foreach ($ticketsSummary as $type => $quantity) {
+                $ticketType = TicketType::find($type);
+                $total += ($ticketType->price + ($ticketType->price * 0.2)) * $quantity;
+                $saleSummary[] = [
+                    "title" => $ticketType->title,
+                    "description" => $ticketType->description,
+                    "price" => $ticketType->price,
+                    "charge" => $ticketType->price * 0.2,
+                    "quantity" => $quantity,
+                    "total" => ($ticketType->price + ($ticketType->price * 0.2)) * $quantity,
+                ];
+            }
 
-        $event = $sale->event;
+            $event = $sale->event;
 
-        $lineItems = [];
-        foreach ($saleSummary as $key => $item) {
-            $unit_amout = (floatval($item["price"]) * 100) + (floatval($item["price"]) * 0.2 * 100);
-            $quantity = $item["quantity"];
-            $name = $event["title"] . ' - ' . $item["title"];
+            $lineItems = [];
+            foreach ($saleSummary as $key => $item) {
+                $unit_amout = (floatval($item["price"]) * 100) + (floatval($item["price"]) * 0.2 * 100);
+                $quantity = $item["quantity"];
+                $name = $event["title"] . ' - ' . $item["title"];
 
-            $lineItems[] = [
-                'price_data' => [
-                    'currency' => 'mxn',
-                    'unit_amount' => $unit_amout,
-                    'product_data' => [
-                        'name' => $name
+                $lineItems[] = [
+                    'price_data' => [
+                        'currency' => 'mxn',
+                        'unit_amount' => $unit_amout,
+                        'product_data' => [
+                            'name' => $name
+                        ],
                     ],
-                ],
-                'quantity' => $quantity
-            ];
+                    'quantity' => $quantity
+                ];
+            }
+
+            $checkout = $stripe->checkout->sessions->create([
+                'success_url' => route('stripe.checkout.success'),
+                'line_items' => $lineItems,
+                'mode' => 'payment',
+            ]);
+
+            return $checkout;
+        } catch (Exception $e) {
+            return ($e);
         }
-
-        $checkout = $stripe->checkout->sessions->create([
-            'success_url' => route('stripe.checkout.success'),
-            'line_items' => $lineItems,
-            'mode' => 'payment',
-        ]);
-
-        return $checkout;
     }
 }
