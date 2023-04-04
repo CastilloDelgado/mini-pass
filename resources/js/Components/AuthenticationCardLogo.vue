@@ -4,6 +4,9 @@ import { Link } from "@inertiajs/vue3";
 
 <template>
     <Link :href="'/'">
-        <img :src="'../storage/images/logo-text.png'" class="w-60" />
+        <img
+            :src="'https://minipass-assets.s3.amazonaws.com/logo-text.png'"
+            class="w-60"
+        />
     </Link>
 </template>
