@@ -1,3 +1,3 @@
 <template>
-    <img :src="'/storage/images/logo-text.png'" />
+    <img :src="'https://minipass-assets.s3.amazonaws.com/logo-text.png'" />
 </template>
