@@ -3,9 +3,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ShowEventsController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\TicketDocumentController;
 use App\Http\Controllers\TicketTypeController;
 use Illuminate\Support\Facades\Route;
-use Mailgun\Mailgun;
 
 
 // General Routes
@@ -46,3 +46,7 @@ Route::get('/getSession/{sale}', [StripeController::class, 'getSession'])->name(
 
 Route::get('/purchase/{sale}/cancel', [SaleController::class, 'cancel'])->name('purchase.cancel');
 Route::get('/purchase/{sale}/fail', [SaleController::class, 'fail'])->name('purchase.fail');
+
+
+// Ticket Document Controller
+Route::get('/printer', [TicketDocumentController::class, 'create']);
